@@ -634,7 +634,7 @@ img {
 }
 
 .rge-content h2 {
-  white-space: nowrap;
+  white-space: normal;
   font-size: clamp(1.2rem, 2.6vw, 2.2rem);
   margin-bottom: 0.9rem;
 }
@@ -886,6 +886,10 @@ textarea {
   color: #f6f0e7;
 }
 
+.site-footer div {
+  overflow-wrap: anywhere;
+}
+
 .home-page main,
 .home-page .site-footer {
   text-align: center;
@@ -1071,6 +1075,210 @@ textarea {
 .mentions-page .footer-grid {
   grid-template-columns: 1fr;
   text-align: center;
+}
+
+@media (max-width: 759px) {
+  body {
+    font-size: 15.5px;
+    padding-top: 84px;
+  }
+
+  .container {
+    width: min(1100px, 94%);
+  }
+
+  .site-header {
+    top: 10px;
+  }
+
+  .site-header .container {
+    width: min(1220px, 97%);
+    padding-left: 0.55rem;
+    padding-right: 0.55rem;
+  }
+
+  .nav-wrap {
+    min-height: 64px;
+  }
+
+  .logo-image {
+    width: 56px;
+    height: 56px;
+  }
+
+  .brand {
+    gap: 0.45rem;
+    font-size: 0.95rem;
+  }
+
+  .menu-toggle {
+    font-size: 1.35rem;
+  }
+
+  .hero {
+    min-height: 88svh;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 11vw, 3rem);
+    letter-spacing: 0.8px;
+  }
+
+  .hero-slogan {
+    font-size: clamp(1rem, 4.4vw, 1.25rem);
+    margin: 0.85rem auto 0.6rem;
+  }
+
+  .hero-short {
+    font-size: 0.98rem;
+    margin-bottom: 1.35rem;
+  }
+
+  .section {
+    padding: 2.35rem 0;
+  }
+
+  .home-page .section {
+    padding: 2.2rem 0;
+  }
+
+  .section h2 {
+    font-size: clamp(1.25rem, 6vw, 1.6rem);
+    line-height: 1.3;
+  }
+
+  .section-intro,
+  .card p,
+  .service-card p,
+  .faq-item p,
+  .impact-card p,
+  .impact-diff p {
+    font-size: 0.97rem;
+    line-height: 1.62;
+  }
+
+  .btn {
+    padding: 0.82rem 1.2rem;
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .impact-intro .btn,
+  .impact-diff .btn,
+  .trust-main .btn {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .impact-grid {
+    gap: 1rem;
+  }
+
+  .impact-card {
+    padding: 0.5rem 0.7rem;
+  }
+
+  .impact-card h3 {
+    font-size: 0.98rem;
+  }
+
+  .impact-diff {
+    padding-top: 0.15rem;
+  }
+
+  .impact-badge {
+    font-size: 0.84rem;
+  }
+
+  .realisations-frame {
+    padding: 0.85rem;
+  }
+
+  .carousel {
+    padding: 0 2.1rem;
+  }
+
+  .carousel-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 1.35rem;
+  }
+
+  .carousel-btn.prev {
+    left: -0.35rem;
+  }
+
+  .carousel-btn.next {
+    right: -0.35rem;
+  }
+
+  .carousel-track {
+    grid-auto-columns: 90%;
+    gap: 0.85rem;
+  }
+
+  .category-grid {
+    gap: 0.8rem;
+  }
+
+  .category-card span,
+  .carousel-caption {
+    font-size: 0.9rem;
+  }
+
+  .contact-wrap {
+    gap: 0.9rem;
+  }
+
+  .map-placeholder {
+    min-height: 230px;
+  }
+
+  .cookie-consent {
+    width: min(920px, 96%);
+    bottom: 8px;
+    padding: 0.8rem;
+    border-radius: 13px;
+  }
+
+  .cookie-consent__content h2 {
+    font-size: 1.05rem;
+  }
+
+  .cookie-consent__content p {
+    font-size: 0.9rem;
+  }
+
+  .cookie-option {
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding: 0.55rem 0.6rem;
+  }
+
+  .cookie-option h3 {
+    font-size: 0.92rem;
+  }
+
+  .cookie-option p {
+    font-size: 0.82rem;
+  }
+
+  .switch {
+    margin-top: 0.15rem;
+  }
+
+  .site-footer {
+    padding: 1.7rem 0;
+  }
+
+  .site-footer strong {
+    display: inline-block;
+    margin-bottom: 0.25rem;
+  }
 }
 
 .reveal {
