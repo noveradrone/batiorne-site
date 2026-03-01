@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="620" viewBox="0 0 900 620" role="img" aria-label="Avant après cloison à Flers">
+  <rect width="900" height="620" fill="#edf1f5"/>
+  <rect x="40" y="70" width="390" height="470" fill="#cad4df"/>
+  <rect x="470" y="70" width="390" height="470" fill="#a9bbce"/>
+  <text x="185" y="320" text-anchor="middle" font-family="Arial" font-size="42" fill="#1c2d3e">AVANT</text>
+  <text x="665" y="320" text-anchor="middle" font-family="Arial" font-size="42" fill="#1c2d3e">APRES</text>
+  <text x="450" y="590" text-anchor="middle" font-family="Arial" font-size="30" fill="#1c2d3e">Cloison placo - Flers</text>
+</svg>

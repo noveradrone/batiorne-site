@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="620" viewBox="0 0 900 620" role="img" aria-label="Isolation phonique à Messei">
+  <rect width="900" height="620" fill="#eef3f7"/>
+  <rect x="140" y="120" width="620" height="370" rx="24" fill="#b7c9da"/>
+  <path d="M220 305h460" stroke="#7f98af" stroke-width="16"/>
+  <path d="M220 360h340" stroke="#7f98af" stroke-width="16"/>
+  <text x="450" y="575" text-anchor="middle" font-family="Arial" font-size="30" fill="#1c2d3e">Isolation phonique - Messei</text>
+</svg>

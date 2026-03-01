@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="220" viewBox="0 0 420 220" role="img" aria-label="Logo RGE">
+  <rect width="420" height="220" rx="18" fill="#ffffff"/>
+  <rect x="12" y="12" width="396" height="196" rx="12" fill="#f4f9eb" stroke="#83b535" stroke-width="4"/>
+  <text x="210" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="68" font-weight="700" fill="#315022">RGE</text>
+  <text x="210" y="138" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#5a6f41">Reconnu Garant de l'Environnement</text>
+</svg>

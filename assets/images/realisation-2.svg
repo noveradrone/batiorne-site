@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="620" viewBox="0 0 900 620" role="img" aria-label="Faux plafond à Saint-Georges-des-Groseillers">
+  <rect width="900" height="620" fill="#f4f6f8"/>
+  <rect x="90" y="120" width="720" height="360" rx="20" fill="#c2d1df"/>
+  <line x1="90" y1="220" x2="810" y2="220" stroke="#8ea3b8" stroke-width="8"/>
+  <line x1="90" y1="320" x2="810" y2="320" stroke="#8ea3b8" stroke-width="8"/>
+  <text x="450" y="575" text-anchor="middle" font-family="Arial" font-size="30" fill="#1c2d3e">Faux plafond - Saint-Georges-des-Groseillers</text>
+</svg>

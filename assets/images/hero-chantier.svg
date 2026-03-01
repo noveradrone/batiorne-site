@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Maison en construction avec mur en placo et isolation en cours à Flers">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8f2eb"/>
+      <stop offset="100%" stop-color="#fcf8f2"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a66a3f"/>
+      <stop offset="100%" stop-color="#87512d"/>
+    </linearGradient>
+    <pattern id="insulationPattern" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="#e8d38b"/>
+      <path d="M0 20 L20 0" stroke="#d2b764" stroke-width="2"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <rect y="640" width="1600" height="260" fill="url(#ground)"/>
+
+  <g transform="translate(250,130)">
+    <polygon points="520,0 1020,250 20,250" fill="#6a4d35" opacity="0.95"/>
+    <rect x="120" y="250" width="800" height="420" fill="#d9d3c8"/>
+
+    <g>
+      <rect x="190" y="290" width="320" height="320" fill="#f5f2eb" stroke="#9f917e" stroke-width="6"/>
+      <line x1="250" y1="290" x2="250" y2="610" stroke="#8a6542" stroke-width="10"/>
+      <line x1="320" y1="290" x2="320" y2="610" stroke="#8a6542" stroke-width="10"/>
+      <line x1="390" y1="290" x2="390" y2="610" stroke="#8a6542" stroke-width="10"/>
+      <line x1="460" y1="290" x2="460" y2="610" stroke="#8a6542" stroke-width="10"/>
+
+      <rect x="250" y="320" width="60" height="260" fill="url(#insulationPattern)"/>
+      <rect x="320" y="320" width="60" height="260" fill="url(#insulationPattern)"/>
+      <rect x="390" y="320" width="60" height="260" fill="url(#insulationPattern)"/>
+
+      <rect x="460" y="320" width="44" height="260" fill="#d9d9d2"/>
+      <text x="312" y="650" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="#3b3229">Isolation en cours</text>
+      <text x="482" y="650" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#3b3229">Placo posé</text>
+    </g>
+
+    <g>
+      <rect x="590" y="290" width="250" height="320" fill="#f0ece3" stroke="#9f917e" stroke-width="6"/>
+      <rect x="620" y="330" width="80" height="240" fill="#d7d1c6"/>
+      <rect x="730" y="330" width="80" height="240" fill="#d7d1c6"/>
+      <line x1="705" y1="290" x2="705" y2="610" stroke="#8a6542" stroke-width="8"/>
+      <text x="715" y="650" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#3b3229">Cloisons intérieures</text>
+    </g>
+
+    <g transform="translate(0,0)">
+      <rect x="40" y="600" width="60" height="22" rx="6" fill="#4b6b4f"/>
+      <rect x="980" y="600" width="60" height="22" rx="6" fill="#4b6b4f"/>
+      <circle cx="70" cy="640" r="18" fill="#2d3f2f"/>
+      <circle cx="1010" cy="640" r="18" fill="#2d3f2f"/>
+    </g>
+  </g>
+</svg>
