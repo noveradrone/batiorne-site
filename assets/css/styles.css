@@ -518,6 +518,10 @@ img {
   border-radius: 18px;
 }
 
+.batiorne-video::-webkit-media-controls {
+  display: none !important;
+}
+
 .coordination-media figcaption {
   margin-top: 0.2rem;
   color: var(--color-muted);

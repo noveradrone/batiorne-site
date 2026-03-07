@@ -302,12 +302,21 @@ if (carousel) {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const video = document.querySelector('.batiorne-video');
-  if (video) {
-    video.muted = true;
-    video.play().catch(() => {
-      console.log('Autoplay bloque par le navigateur');
-    });
+  if (!video) return;
+
+  video.muted = true;
+  video.defaultMuted = true;
+  video.playsInline = true;
+  video.setAttribute('muted', '');
+  video.setAttribute('autoplay', '');
+  video.setAttribute('playsinline', '');
+  video.setAttribute('webkit-playsinline', '');
+
+  try {
+    await video.play();
+  } catch (e) {
+    console.log('Autoplay bloque par Safari', e);
   }
 });
