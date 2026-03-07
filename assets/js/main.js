@@ -301,3 +301,32 @@ if (carousel) {
     });
   }
 }
+
+// Force autoplay on the homepage chantier video (mobile/desktop safe).
+const coordinationVideo = document.querySelector('.coordination-video');
+if (coordinationVideo) {
+  const tryAutoPlay = () => {
+    coordinationVideo.muted = true;
+    coordinationVideo.defaultMuted = true;
+    coordinationVideo.autoplay = true;
+    coordinationVideo.playsInline = true;
+    const playAttempt = coordinationVideo.play();
+    if (playAttempt && typeof playAttempt.catch === 'function') {
+      playAttempt.catch(() => {
+        // Some browsers can still block autoplay in strict power/data modes.
+      });
+    }
+  };
+
+  if (coordinationVideo.readyState >= 2) {
+    tryAutoPlay();
+  } else {
+    coordinationVideo.addEventListener('loadeddata', tryAutoPlay, { once: true });
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      tryAutoPlay();
+    }
+  });
+}
