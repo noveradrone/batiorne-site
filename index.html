@@ -101,24 +101,8 @@
                 aria-describedby="coordination-video-desc"
               >
                 <!-- Remplacer les fichiers vidéo par vos médias finaux dans assets/videos/. -->
-                <video
-                  class="coordination-video"
-                  autoplay
-                  loop
-                  muted
-                  playsinline
-                  webkit-playsinline
-                  preload="auto"
-                  poster="assets/images/img-premiere.PNG"
-                  aria-label="Vidéo de suivi de chantier BATIORNE"
-                  tabindex="-1"
-                  disablepictureinpicture
-                  controlslist="nodownload noplaybackrate noremoteplayback nofullscreen"
-                >
-                  <source src="assets/videos/vid_chant_acceuille.mp4" type="video/mp4" />
-                  <source src="assets/videos/vid_chant_acceuille.mov" />
-                  Votre navigateur ne supporte pas la vidéo HTML5.
-                  <a href="assets/videos/vid_chant_acceuille.mov">Voir la vidéo de chantier BATIORNE</a>.
+                <video autoplay muted loop playsinline preload="metadata" class="batiorne-video">
+                  <source src="/assets/videos/batiorne-chantier.mp4" type="video/mp4" />
                 </video>
                 <figcaption id="coordination-video-caption">Suivi de chantier et finitions BATIORNE</figcaption>
                 <p id="coordination-video-desc" class="sr-only">

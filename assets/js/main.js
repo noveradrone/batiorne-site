@@ -303,7 +303,7 @@ if (carousel) {
 }
 
 // Force autoplay on the homepage chantier video (mobile/desktop safe).
-const coordinationVideo = document.querySelector('.coordination-video');
+const coordinationVideo = document.querySelector('.batiorne-video');
 if (coordinationVideo) {
   let attempts = 0;
   const maxAttempts = 8;
