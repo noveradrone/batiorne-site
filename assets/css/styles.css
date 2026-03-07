@@ -511,7 +511,7 @@ img {
 
 .coordination-video {
   display: block;
-  width: min(84vw, 330px);
+  width: min(72vw, 260px);
   margin: 0 auto;
   border-radius: 14px;
   background: #1f1f1f;
@@ -1598,7 +1598,7 @@ textarea {
   }
 
   .coordination-video {
-    width: min(100%, 340px);
+    width: min(100%, 280px);
   }
 
   .contact-wrap {
