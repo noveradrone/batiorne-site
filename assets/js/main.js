@@ -302,72 +302,12 @@ if (carousel) {
   }
 }
 
-// Force autoplay on the homepage chantier video (mobile/desktop safe).
-const coordinationVideo = document.querySelector('.batiorne-video');
-if (coordinationVideo) {
-  let attempts = 0;
-  const maxAttempts = 8;
-
-  const tryAutoPlay = () => {
-    if (attempts >= maxAttempts) return;
-    attempts += 1;
-    coordinationVideo.muted = true;
-    coordinationVideo.defaultMuted = true;
-    coordinationVideo.autoplay = true;
-    coordinationVideo.playsInline = true;
-    coordinationVideo.setAttribute('playsinline', '');
-    coordinationVideo.setAttribute('webkit-playsinline', '');
-    const playAttempt = coordinationVideo.play();
-    if (playAttempt && typeof playAttempt.catch === 'function') {
-      playAttempt.catch(() => {
-        // Some browsers can still block autoplay in strict power/data modes.
-      });
-    }
-  };
-
-  if (coordinationVideo.readyState >= 2) {
-    tryAutoPlay();
-  } else {
-    coordinationVideo.addEventListener('loadeddata', tryAutoPlay, { once: true });
+document.addEventListener('DOMContentLoaded', () => {
+  const video = document.querySelector('.batiorne-video');
+  if (video) {
+    video.muted = true;
+    video.play().catch(() => {
+      console.log('Autoplay bloque par le navigateur');
+    });
   }
-
-  coordinationVideo.addEventListener('canplay', tryAutoPlay);
-  document.addEventListener('DOMContentLoaded', tryAutoPlay);
-  window.addEventListener('load', tryAutoPlay);
-  window.addEventListener('pageshow', tryAutoPlay);
-
-  const autoPlayInterval = setInterval(() => {
-    if (!coordinationVideo.paused) {
-      clearInterval(autoPlayInterval);
-      return;
-    }
-    if (attempts >= maxAttempts) {
-      clearInterval(autoPlayInterval);
-      return;
-    }
-    tryAutoPlay();
-  }, 900);
-
-  const videoObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          tryAutoPlay();
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
-  videoObserver.observe(coordinationVideo);
-
-  coordinationVideo.addEventListener('playing', () => {
-    clearInterval(autoPlayInterval);
-    videoObserver.disconnect();
-  });
-
-  document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) {
-      tryAutoPlay();
-    }
-  });
-}
+});
