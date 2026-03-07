@@ -101,7 +101,18 @@
                 aria-describedby="coordination-video-desc"
               >
                 <!-- Remplacer les fichiers vidéo par vos médias finaux dans assets/videos/. -->
-                <video autoplay muted loop playsinline preload="metadata" class="batiorne-video">
+                <video
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  webkit-playsinline
+                  preload="auto"
+                  class="batiorne-video"
+                  tabindex="-1"
+                  disablepictureinpicture
+                >
+                  <source src="assets/videos/batiorne-chantier.mp4" type="video/mp4" />
                   <source src="/assets/videos/batiorne-chantier.mp4" type="video/mp4" />
                 </video>
                 <figcaption id="coordination-video-caption">Suivi de chantier et finitions BATIORNE</figcaption>

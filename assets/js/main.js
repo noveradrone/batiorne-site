@@ -331,7 +331,10 @@ if (coordinationVideo) {
     coordinationVideo.addEventListener('loadeddata', tryAutoPlay, { once: true });
   }
 
+  coordinationVideo.addEventListener('canplay', tryAutoPlay);
+  document.addEventListener('DOMContentLoaded', tryAutoPlay);
   window.addEventListener('load', tryAutoPlay);
+  window.addEventListener('pageshow', tryAutoPlay);
 
   const autoPlayInterval = setInterval(() => {
     if (!coordinationVideo.paused) {
