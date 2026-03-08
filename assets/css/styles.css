@@ -1805,3 +1805,86 @@ textarea {
     max-width: 320px;
   }
 }
+
+/* Alignment tuning for the "Un seul interlocuteur" section */
+.section-accompagnement .container {
+  width: min(1200px, 100%);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+.section-accompagnement-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+}
+
+.section-accompagnement .accompagnement-text {
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: left;
+  justify-items: start;
+}
+
+.section-accompagnement .accompagnement-text h2,
+.section-accompagnement .accompagnement-text p {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.section-accompagnement .accompagnement-text .impact-badge {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.section-accompagnement .coordination-badges {
+  justify-content: flex-start;
+}
+
+.accompagnement-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-accompagnement .batiorne-video-card {
+  max-width: 360px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .section-accompagnement .container {
+    padding: 56px 20px;
+  }
+
+  .section-accompagnement-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 28px;
+  }
+
+  .section-accompagnement .accompagnement-text {
+    margin: 0 auto;
+    max-width: 640px;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .section-accompagnement .accompagnement-text h2,
+  .section-accompagnement .accompagnement-text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-accompagnement .accompagnement-text .impact-badge {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-accompagnement .coordination-badges {
+    justify-content: center;
+  }
+}
