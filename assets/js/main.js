@@ -301,26 +301,3 @@ if (carousel) {
     });
   }
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-  console.log('VIDEO TAG FOUND =', document.querySelector('.batiorne-video')?.tagName);
-  console.log('VIDEO SRC =', document.querySelector('.batiorne-video source')?.getAttribute('src'));
-
-  const video = document.querySelector('.batiorne-video');
-  if (!video) return;
-
-  video.muted = true;
-  video.defaultMuted = true;
-  video.setAttribute('muted', '');
-  video.setAttribute('autoplay', '');
-  video.setAttribute('loop', '');
-  video.setAttribute('playsinline', '');
-  video.setAttribute('webkit-playsinline', '');
-
-  const playPromise = video.play();
-  if (playPromise !== undefined) {
-    playPromise.catch((err) => {
-      console.log('Autoplay bloqué :', err);
-    });
-  }
-});
