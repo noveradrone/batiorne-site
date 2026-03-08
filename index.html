@@ -95,39 +95,16 @@
                 </ul>
               </div>
 
-              <video
-                class="batiorne-video"
-                src="/assets/videos/batiorne-chantier-noaudio.mp4"
-                autoplay
-                muted
-                loop
-                playsinline
-                webkit-playsinline
-                preload="auto"
-              ></video>
-
-              <script>
-                document.addEventListener('DOMContentLoaded', async () => {
-                  const video = document.querySelector('.batiorne-video');
-                  if (!video) return;
-
-                  video.muted = true;
-                  video.defaultMuted = true;
-                  video.volume = 0;
-                  video.setAttribute('muted', '');
-                  video.setAttribute('autoplay', '');
-                  video.setAttribute('loop', '');
-                  video.setAttribute('playsinline', '');
-                  video.setAttribute('webkit-playsinline', '');
-
-                  try {
-                    await video.play();
-                    console.log('autoplay OK');
-                  } catch (e) {
-                    console.log('autoplay bloqué', e);
-                  }
-                });
-              </script>
+              <div class="batiorne-video-card">
+                <img
+                  src="/assets/videos/vid_acc.gif"
+                  alt="Suivi de chantier et finitions BATIORNE"
+                  class="batiorne-video"
+                />
+                <p class="batiorne-video-caption">
+                  Suivi de chantier et finitions BATIORNE
+                </p>
+              </div>
             </div>
           </div>
         </div>

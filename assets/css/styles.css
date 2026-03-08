@@ -504,14 +504,13 @@ img {
 }
 
 .batiorne-video {
-  display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 9 / 16;
-  object-fit: cover;
   border-radius: 24px;
-  background: #e7e2d8;
+  object-fit: cover;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  display: block;
+  aspect-ratio: 9 / 16;
 }
 
 .batiorne-video-caption {
@@ -519,12 +518,6 @@ img {
   text-align: center;
   font-weight: 700;
   color: #5f5348;
-}
-
-.batiorne-video::-webkit-media-controls,
-.batiorne-video::-webkit-media-controls-start-playback-button {
-  display: none !important;
-  -webkit-appearance: none;
 }
 
 .sr-only {
