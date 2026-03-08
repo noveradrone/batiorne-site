@@ -1822,25 +1822,28 @@ textarea {
 }
 
 .section-accompagnement .accompagnement-text {
-  max-width: 520px;
+  max-width: none;
+  width: 100%;
   margin: 0 auto;
-  text-align: left;
-  justify-items: start;
+  text-align: center;
+  justify-items: center;
 }
 
 .section-accompagnement .accompagnement-text h2,
 .section-accompagnement .accompagnement-text p {
-  margin-left: 0;
-  margin-right: 0;
+  width: 100%;
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .section-accompagnement .accompagnement-text .impact-badge {
-  margin-left: 0;
-  margin-right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .section-accompagnement .coordination-badges {
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .accompagnement-media {
