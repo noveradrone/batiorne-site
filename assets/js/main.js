@@ -311,12 +311,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   video.playsInline = true;
   video.setAttribute('muted', '');
   video.setAttribute('autoplay', '');
+  video.setAttribute('loop', '');
   video.setAttribute('playsinline', '');
   video.setAttribute('webkit-playsinline', '');
 
   try {
     await video.play();
-  } catch (e) {
-    console.log('Autoplay bloque par Safari', e);
+  } catch (err) {
+    console.log('Autoplay bloqué', err);
   }
 });
