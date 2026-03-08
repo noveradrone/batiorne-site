@@ -1846,6 +1846,11 @@ textarea {
   justify-content: center;
 }
 
+.section-accompagnement .coordination-kicker {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .accompagnement-media {
   display: flex;
   justify-content: center;
