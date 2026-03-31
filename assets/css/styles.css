@@ -1814,10 +1814,6 @@ textarea {
 .accompagnement-wrapper {
   width: min(1200px, calc(100% - 40px));
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(2.2rem, 6vw, 5rem);
-  align-items: center;
   padding: clamp(1.4rem, 3vw, 2.2rem);
   border-radius: 32px;
   border: 1px solid rgba(122, 106, 88, 0.18);
@@ -1835,35 +1831,34 @@ textarea {
   pointer-events: none;
 }
 
-.accompagnement-text {
-  max-width: 520px;
+.accompagnement-title {
+  margin: 0 auto clamp(1.8rem, 3vw, 2.5rem);
+  max-width: 18ch;
+  text-align: center;
+  color: var(--color-primary);
+  line-height: 1.14;
+  font-size: clamp(1.78rem, 3.4vw, 2.75rem);
   position: relative;
   z-index: 1;
 }
 
-.accompagnement-kicker {
-  margin: 0 0 0.85rem;
-  display: inline-flex;
-  padding: 0.34rem 0.86rem;
-  border-radius: 999px;
-  border: 1px solid rgba(131, 181, 53, 0.36);
-  background: rgba(131, 181, 53, 0.12);
-  color: #4c6d2b;
-  font-size: 0.76rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
+.accompagnement-layout {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2.2rem, 5vw, 4.4rem);
+  align-items: center;
 }
 
-.accompagnement-text h2 {
-  margin: 0;
-  max-width: 16ch;
-  color: var(--color-primary);
-  line-height: 1.14;
-  font-size: clamp(1.72rem, 3.3vw, 2.65rem);
+.accompagnement-text {
+  max-width: 520px;
+  margin: 0 auto 0 0;
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .accompagnement-text p {
-  margin: 1rem 0 0;
+  margin: 0;
   max-width: 52ch;
   color: #4f463d;
   line-height: 1.8;
@@ -1913,9 +1908,10 @@ textarea {
 .accompagnement-media {
   position: relative;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   z-index: 1;
+  padding-left: 1rem;
 }
 
 .accompagnement-media::before {
@@ -1927,7 +1923,7 @@ textarea {
   border-radius: 50%;
   filter: blur(60px);
   z-index: -1;
-  right: 18%;
+  right: 12%;
   top: 28%;
 }
 
@@ -1938,12 +1934,12 @@ textarea {
   border-radius: 24px;
   border: 1px solid rgba(122, 106, 88, 0.2);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  transform: translateY(24px);
+  transform: translate(18px, 24px);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .media-card:hover {
-  transform: translateY(18px);
+  transform: translate(18px, 18px);
   box-shadow: 0 24px 46px rgba(0, 0, 0, 0.11);
 }
 
@@ -1969,11 +1965,19 @@ textarea {
   }
 
   .accompagnement-wrapper {
-    grid-template-columns: 1fr;
     text-align: center;
-    gap: 1.75rem;
     padding: 1.2rem;
     width: min(1200px, calc(100% - 26px));
+  }
+
+  .accompagnement-title {
+    margin-bottom: 1.5rem;
+    max-width: none;
+  }
+
+  .accompagnement-layout {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
   }
 
   .accompagnement-text {
@@ -1981,12 +1985,6 @@ textarea {
     max-width: 640px;
   }
 
-  .accompagnement-kicker {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .accompagnement-text h2,
   .accompagnement-text p {
     margin-left: auto;
     margin-right: auto;
@@ -2005,6 +2003,7 @@ textarea {
   .accompagnement-media {
     margin-top: 0.9rem;
     justify-content: center;
+    padding-left: 0;
   }
 
   .accompagnement-media::before {
