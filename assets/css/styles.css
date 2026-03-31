@@ -683,6 +683,10 @@ img {
   outline-offset: 4px;
 }
 
+.gallery-two-centered {
+  justify-content: center;
+}
+
 .category-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -1676,6 +1680,13 @@ textarea {
 
   .gallery {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .gallery-two-centered {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .category-grid {
