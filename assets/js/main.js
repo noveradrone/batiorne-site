@@ -310,12 +310,21 @@ if (carousel) {
   }
 }
 
-// Contact form: no backend yet, so open the visitor's mail app with the request pre-filled.
+// Contact form: sent straight to batiorne@yahoo.com through FormSubmit, with the
+// visitor's mail app as a fallback if the service can't be reached.
 const contactForm = document.querySelector('[data-contact-form]');
 if (contactForm) {
-  contactForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const data = new FormData(contactForm);
+  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/batiorne@yahoo.com';
+  const status = contactForm.querySelector('[data-form-status]');
+  const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+  const setStatus = (text, state) => {
+    if (!status) return;
+    status.textContent = text;
+    status.dataset.state = state;
+  };
+
+  const openMailFallback = (data) => {
     const subject = `Demande de devis - ${data.get('type') || 'Travaux'} - ${data.get('nom')}`;
     const body = [
       `Nom : ${data.get('nom')}`,
@@ -326,13 +335,47 @@ if (contactForm) {
       'Projet :',
       data.get('projet')
     ].join('\n');
-
     window.location.href = `mailto:batiorne@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
 
-    const status = contactForm.querySelector('[data-form-status]');
-    if (status) {
-      status.textContent =
-        "Votre messagerie va s'ouvrir avec la demande pré-remplie. Si rien ne s'ouvre, écrivez-nous à batiorne@yahoo.com ou appelez le 06 26 85 16 61.";
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const data = new FormData(contactForm);
+
+    // Honeypot: real visitors never fill this hidden field.
+    if (data.get('_honey')) return;
+
+    submitBtn.disabled = true;
+    setStatus('Envoi en cours…', 'pending');
+
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          _subject: `Demande de devis - ${data.get('type') || 'Travaux'} - ${data.get('nom')}`,
+          _template: 'table',
+          _replyto: data.get('email'),
+          Nom: data.get('nom'),
+          'Téléphone': data.get('telephone'),
+          Email: data.get('email'),
+          'Type de travaux': data.get('type'),
+          Projet: data.get('projet')
+        })
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || String(result.success) !== 'true') throw new Error(result.message || 'Envoi refusé');
+
+      contactForm.reset();
+      setStatus('Merci, votre demande a bien été envoyée ! BATIORNE vous recontacte rapidement.', 'success');
+    } catch (error) {
+      setStatus(
+        "L'envoi n'a pas fonctionné. Votre messagerie va s'ouvrir avec la demande pré-remplie, ou appelez le 06 26 85 16 61.",
+        'error'
+      );
+      openMailFallback(data);
+    } finally {
+      submitBtn.disabled = false;
     }
   });
 }
@@ -615,4 +658,72 @@ if (spotlight && !prefersReducedMotion) {
     spotlight.style.setProperty('--mx', `${event.clientX - rect.left}px`);
     spotlight.style.setProperty('--my', `${event.clientY - rect.top}px`);
   });
+}
+
+// Reels: arrows and mouse drag on horizontal galleries.
+document.querySelectorAll('[data-reel]').forEach((reel) => {
+  const wrap = document.createElement('div');
+  wrap.className = 'h3-reel-wrap';
+  reel.parentNode.insertBefore(wrap, reel);
+  wrap.appendChild(reel);
+
+  const makeBtn = (cls, label, text) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = `h3-reel-btn ${cls}`;
+    btn.setAttribute('aria-label', label);
+    btn.textContent = text;
+    wrap.appendChild(btn);
+    return btn;
+  };
+  const prev = makeBtn('h3-reel-prev', 'Photos précédentes', '‹');
+  const next = makeBtn('h3-reel-next', 'Photos suivantes', '›');
+  const step = () => (reel.querySelector('figure')?.getBoundingClientRect().width || 300) + 16;
+
+  const update = () => {
+    prev.disabled = reel.scrollLeft < 8;
+    next.disabled = reel.scrollLeft + reel.clientWidth > reel.scrollWidth - 8;
+  };
+  prev.addEventListener('click', () => reel.scrollBy({ left: -step() * 2 }));
+  next.addEventListener('click', () => reel.scrollBy({ left: step() * 2 }));
+  reel.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+
+  // Drag to scroll with the mouse; a real drag must not open the lightbox.
+  let startX = 0;
+  let startLeft = 0;
+  let moved = false;
+  reel.addEventListener('pointerdown', (event) => {
+    if (event.pointerType !== 'mouse') return;
+    startX = event.clientX;
+    startLeft = reel.scrollLeft;
+    moved = false;
+    reel.classList.add('is-dragging');
+    reel.setPointerCapture(event.pointerId);
+  });
+  reel.addEventListener('pointermove', (event) => {
+    if (!reel.classList.contains('is-dragging')) return;
+    const delta = event.clientX - startX;
+    if (Math.abs(delta) > 5) moved = true;
+    reel.scrollLeft = startLeft - delta;
+  });
+  const endDrag = () => reel.classList.remove('is-dragging');
+  reel.addEventListener('pointerup', endDrag);
+  reel.addEventListener('pointercancel', endDrag);
+  reel.addEventListener('click', (event) => {
+    if (moved) {
+      event.stopPropagation();
+      event.preventDefault();
+      moved = false;
+    }
+  }, true);
+});
+
+// Mobile action bar appears once the visitor scrolls past the first screen.
+const mobileBar = document.querySelector('.h3-mobile-bar');
+if (mobileBar) {
+  const toggleBar = () => mobileBar.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.4);
+  window.addEventListener('scroll', toggleBar, { passive: true });
+  toggleBar();
 }
