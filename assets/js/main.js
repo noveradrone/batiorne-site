@@ -413,3 +413,206 @@ if (galleryImages.length) {
     if (event.key === 'ArrowRight' && hasSeveral) show(currentIndex + 1);
   });
 }
+
+// ---------- Homepage interactions ----------
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Header state and scroll progress bar.
+const progressBar = document.querySelector('.h3-progress');
+const stepsList = document.querySelector('[data-steps]');
+if (document.body.classList.contains('home3')) {
+  const onScroll = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    document.body.classList.toggle('is-scrolled', window.scrollY > 40);
+    if (progressBar) progressBar.style.setProperty('--progress', max > 0 ? window.scrollY / max : 0);
+    if (stepsList) {
+      const rect = stepsList.getBoundingClientRect();
+      const ratio = Math.min(Math.max((window.innerHeight * 0.8 - rect.top) / rect.height, 0), 1);
+      stepsList.style.setProperty('--steps', `${Math.round(ratio * 100)}%`);
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+// Stagger reveal animations inside each grid.
+document.querySelectorAll('.h3-ba-grid, .h3-steps').forEach((group) => {
+  group.querySelectorAll('.reveal').forEach((item, index) => {
+    item.style.setProperty('--delay', `${index * 0.12}s`);
+  });
+});
+
+// Rotating words in the hero title.
+const rotator = document.querySelector('[data-rotator]');
+if (rotator && !prefersReducedMotion) {
+  const words = Array.from(rotator.children);
+  let current = 0;
+  setInterval(() => {
+    const previous = words[current];
+    current = (current + 1) % words.length;
+    previous.classList.remove('is-active');
+    previous.classList.add('is-leaving');
+    words[current].classList.remove('is-leaving');
+    words[current].classList.add('is-active');
+    setTimeout(() => previous.classList.remove('is-leaving'), 600);
+  }, 2600);
+}
+
+// Before/after comparison sliders.
+document.querySelectorAll('[data-compare]').forEach((compare) => {
+  const range = compare.querySelector('input[type="range"]');
+  if (!range) return;
+  const setPos = (value) => compare.style.setProperty('--pos', `${value}%`);
+  let userTouched = false;
+
+  range.addEventListener('input', () => {
+    userTouched = true;
+    setPos(range.value);
+  });
+  range.addEventListener('pointerdown', () => compare.classList.add('is-dragging'));
+  window.addEventListener('pointerup', () => compare.classList.remove('is-dragging'));
+
+  // Hero slider sweeps once on load to show it can be dragged.
+  if (compare.hasAttribute('data-demo') && !prefersReducedMotion) {
+    const keyframes = [50, 18, 82, 50];
+    let start = null;
+    const duration = 2600;
+    const animate = (time) => {
+      if (userTouched) return;
+      if (start === null) start = time;
+      const t = Math.min((time - start) / duration, 1);
+      const segment = Math.min(Math.floor(t * (keyframes.length - 1)), keyframes.length - 2);
+      const local = t * (keyframes.length - 1) - segment;
+      const eased = local < 0.5 ? 2 * local * local : 1 - Math.pow(-2 * local + 2, 2) / 2;
+      const value = keyframes[segment] + (keyframes[segment + 1] - keyframes[segment]) * eased;
+      setPos(value);
+      range.value = value;
+      if (t < 1) requestAnimationFrame(animate);
+    };
+    setTimeout(() => requestAnimationFrame(animate), 1200);
+  }
+});
+
+// Services: tabs switch the large photo.
+document.querySelectorAll('[data-tabs]').forEach((tabsRoot) => {
+  const tabs = Array.from(tabsRoot.querySelectorAll('[data-tab]'));
+  const panels = Array.from(tabsRoot.querySelectorAll('[data-panel]'));
+  let autoTimer = null;
+
+  const activate = (index) => {
+    tabs.forEach((tab, i) => {
+      tab.classList.toggle('is-active', i === index);
+      tab.setAttribute('aria-selected', String(i === index));
+    });
+    panels.forEach((panel, i) => panel.classList.toggle('is-active', i === index));
+  };
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+      clearInterval(autoTimer);
+      activate(index);
+    });
+    tab.addEventListener('mouseenter', () => {
+      if (window.matchMedia('(hover: hover)').matches) {
+        clearInterval(autoTimer);
+        activate(index);
+      }
+    });
+  });
+
+  // Cycle through services until the visitor interacts.
+  if (!prefersReducedMotion) {
+    let current = 0;
+    autoTimer = setInterval(() => {
+      current = (current + 1) % tabs.length;
+      activate(current);
+    }, 4500);
+  }
+});
+
+// Heat-loss house.
+const heat = document.querySelector('[data-heat]');
+if (heat) {
+  const zones = {
+    toit: {
+      pct: '25 à 30 % des pertes',
+      title: 'Toit et combles',
+      text: "C'est la première source de pertes. Nous isolons vos combles perdus ou aménagés et vos rampants."
+    },
+    murs: {
+      pct: '20 à 25 % des pertes',
+      title: 'Murs',
+      text: "Nous isolons vos murs par l'intérieur, avec un doublage placo propre et prêt à peindre."
+    },
+    air: {
+      pct: '20 à 25 % des pertes',
+      title: 'Air et fuites',
+      text: "Une isolation posée en continu, avec des raccords soignés, limite les fuites d'air parasites."
+    },
+    fenetres: {
+      pct: '10 à 15 % des pertes',
+      title: 'Fenêtres',
+      text: "Nous soignons les raccords d'isolation et les doublages autour de vos menuiseries."
+    },
+    sols: {
+      pct: '7 à 10 % des pertes',
+      title: 'Planchers bas',
+      text: 'Nous isolons vos sols pour supprimer la sensation de froid et gagner en confort.'
+    },
+    ponts: {
+      pct: '5 à 10 % des pertes',
+      title: 'Ponts thermiques',
+      text: "Aux jonctions mur/plafond/plancher, une pose continue de l'isolant limite ces fuites de chaleur."
+    }
+  };
+
+  const card = heat.querySelector('.h3-heat-card');
+  const pctEl = heat.querySelector('[data-heat-pct]');
+  const titleEl = heat.querySelector('[data-heat-title]');
+  const textEl = heat.querySelector('[data-heat-text]');
+  const result = heat.querySelector('[data-heat-result]');
+  const zoneEls = Array.from(heat.querySelectorAll('[data-zone]'));
+  const modeButtons = Array.from(heat.querySelectorAll('[data-heat-mode]'));
+
+  const selectZone = (name) => {
+    const zone = zones[name];
+    if (!zone) return;
+    zoneEls.forEach((el) => el.classList.toggle('is-selected', el.dataset.zone === name));
+    pctEl.textContent = zone.pct;
+    titleEl.textContent = zone.title;
+    textEl.textContent = zone.text;
+    card.classList.remove('is-changing');
+    void card.offsetWidth;
+    card.classList.add('is-changing');
+  };
+
+  const setMode = (insulated) => {
+    heat.classList.toggle('is-insulated', insulated);
+    modeButtons.forEach((btn) => btn.classList.toggle('is-active', (btn.dataset.heatMode === 'on') === insulated));
+    result.innerHTML = insulated
+      ? '<strong>Maison isolée :</strong> la chaleur reste à l’intérieur, le confort augmente et vos factures baissent.'
+      : '<strong>Sans isolation</strong>, la chaleur que vous payez s’échappe par le toit, les murs et le sol.';
+  };
+
+  zoneEls.forEach((el) => {
+    el.addEventListener('click', () => selectZone(el.dataset.zone));
+    el.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        selectZone(el.dataset.zone);
+      }
+    });
+  });
+  modeButtons.forEach((btn) => btn.addEventListener('click', () => setMode(btn.dataset.heatMode === 'on')));
+  selectZone('toit');
+}
+
+// Final call-to-action: glow follows the pointer.
+const spotlight = document.querySelector('[data-spotlight]');
+if (spotlight && !prefersReducedMotion) {
+  spotlight.addEventListener('pointermove', (event) => {
+    const rect = spotlight.getBoundingClientRect();
+    spotlight.style.setProperty('--mx', `${event.clientX - rect.left}px`);
+    spotlight.style.setProperty('--my', `${event.clientY - rect.top}px`);
+  });
+}
