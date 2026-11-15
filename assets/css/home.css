@@ -1452,3 +1452,212 @@
     justify-items: center;
   }
 }
+
+/* =====================================================================
+   Light theme: follows the device's Light/Dark appearance setting
+   (prefers-color-scheme). Dark stays the default above.
+   ===================================================================== */
+.logo-for-light {
+  display: none;
+}
+
+@media (prefers-color-scheme: light) {
+  .home3 {
+    --ink: #f7f4ee;
+    --ink-2: #efeadf;
+    --ink-3: #ffffff;
+    --line: rgba(29, 33, 26, 0.1);
+    --lime: #4a7418;
+    --brand: #83b535;
+    --text-on-dark: #1d211a;
+    --muted-on-dark: #5c6453;
+    --hot: #e2572b;
+  }
+
+  .logo-for-dark {
+    display: none;
+  }
+
+  .logo-for-light {
+    display: block;
+  }
+
+  /* Header */
+  .home3 .site-header .container {
+    background: rgba(255, 255, 255, 0.75);
+  }
+
+  .home3.is-scrolled .site-header .container {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .home3 .nav-links a:hover,
+  .home3 .nav-links a.active {
+    background: rgba(74, 116, 24, 0.1);
+    color: var(--text-on-dark);
+  }
+
+  .home3 .nav-links a.nav-cta {
+    color: #fff;
+  }
+
+  /* Buttons */
+  .h3-btn-primary,
+  .home3 .btn-primary,
+  .home3 .btn-secondary,
+  .home3 .btn-light,
+  .home3 .call-fab {
+    color: #fff;
+  }
+
+  .h3-btn-primary:hover,
+  .home3 .btn-primary:hover,
+  .home3 .btn-secondary:hover {
+    background: #3d6213;
+  }
+
+  .h3-btn-ghost,
+  .home3 .btn-outline {
+    border-color: rgba(29, 33, 26, 0.25);
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  .h3-btn-ghost:hover {
+    background: #fff;
+  }
+
+  /* Hero */
+  .h3-hero {
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px) 0 0 / 56px 56px,
+      linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px) 0 0 / 56px 56px,
+      var(--ink);
+  }
+
+  .h3-glow {
+    background: radial-gradient(circle, rgba(131, 181, 53, 0.28), transparent 60%);
+  }
+
+  .h3-chip {
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .h3-rotator > span {
+    background-image: linear-gradient(90deg, #4a7418, #83b535 60%, #4a7418);
+  }
+
+  .h3-hero-compare .h3-compare {
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.18), 0 0 0 1px var(--line);
+  }
+
+  .h3-tag-after {
+    color: #fff;
+  }
+
+  /* Marquee */
+  .h3-marquee {
+    color: #fff;
+  }
+
+  /* Services */
+  .h3-service-tab.is-active {
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+  }
+
+  .h3-service-visual,
+  .h3-ba-grid .h3-compare,
+  .home3 .hp-svc img,
+  .home3 .gallery figure,
+  .home3 .category-card {
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.14), 0 0 0 1px var(--line);
+  }
+
+  /* Heat house */
+  .h3-heat-stage {
+    background: radial-gradient(circle at 50% 40%, rgba(226, 87, 43, 0.1), transparent 65%), var(--ink-3);
+  }
+
+  .h3-heat.is-insulated .h3-heat-stage {
+    background: radial-gradient(circle at 50% 40%, rgba(131, 181, 53, 0.14), transparent 65%), var(--ink-3);
+  }
+
+  .h3-switch {
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  .h3-switch button.is-active[data-heat-mode="on"] {
+    color: #fff;
+  }
+
+  .h3-wall {
+    fill: #ebe5d8;
+    stroke: rgba(29, 33, 26, 0.45);
+  }
+
+  .h3-ground,
+  .h3-window,
+  .h3-window-bar {
+    stroke: rgba(29, 33, 26, 0.4);
+  }
+
+  .h3-window {
+    fill: rgba(255, 190, 100, 0.45);
+  }
+
+  .h3-pct {
+    fill: #b8411a;
+  }
+
+  .h3-zone.is-selected .h3-pct {
+    fill: #1d211a;
+  }
+
+  .h3-insul {
+    stroke: #83b535;
+  }
+
+  .h3-heat-result {
+    color: #9a3412;
+    background: rgba(226, 87, 43, 0.07);
+  }
+
+  .h3-heat.is-insulated .h3-heat-result {
+    color: #3f6212;
+    background: rgba(131, 181, 53, 0.12);
+  }
+
+  /* Trust + final CTA */
+  .h3-trust {
+    background: linear-gradient(135deg, rgba(131, 181, 53, 0.16), rgba(131, 181, 53, 0.04));
+    border-color: rgba(74, 116, 24, 0.25);
+  }
+
+  .h3-trust-badge {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .h3-final,
+  .home3 .hp-cta {
+    background:
+      radial-gradient(600px circle at var(--mx, 50%) var(--my, 0%), rgba(131, 181, 53, 0.28), transparent 60%),
+      linear-gradient(180deg, var(--ink), #e9f0dc);
+  }
+
+  /* Inner pages */
+  .home3 .hp-form input,
+  .home3 .hp-form select,
+  .home3 .hp-form textarea {
+    border-color: rgba(29, 33, 26, 0.18);
+  }
+
+  .home3 .hp-form ::placeholder {
+    color: #8a9180;
+  }
+
+  /* Footer stays dark in both themes */
+  .home3 .site-footer {
+    background: #1d211a;
+    color: #d9ddd2;
+  }
+}
