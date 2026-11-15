@@ -316,11 +316,12 @@ if (contactForm) {
   contactForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const data = new FormData(contactForm);
-    const subject = `Demande de devis - ${data.get('nom')}`;
+    const subject = `Demande de devis - ${data.get('type') || 'Travaux'} - ${data.get('nom')}`;
     const body = [
       `Nom : ${data.get('nom')}`,
       `Téléphone : ${data.get('telephone')}`,
       `Email : ${data.get('email')}`,
+      `Type de travaux : ${data.get('type') || '-'}`,
       '',
       'Projet :',
       data.get('projet')

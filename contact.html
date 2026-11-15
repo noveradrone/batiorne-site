@@ -19,7 +19,7 @@
     <script>document.documentElement.classList.add('js');</script>
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
-  <body class="contact-page">
+  <body class="hp">
     <a class="skip-link" href="#contenu">Aller au contenu</a>
     <header class="site-header">
       <div class="container nav-wrap">
@@ -33,69 +33,92 @@
           <a href="services.html">Services</a>
           <a href="realisations.html">Réalisations</a>
           <a class="active" href="contact.html">Contact</a>
+          <a class="nav-cta" href="contact.html">Devis gratuit</a>
         </nav>
       </div>
     </header>
 
-    <main id="contenu" class="section">
-      <div class="container">
-        <h1 class="reveal">Contact et demande de devis</h1>
-        <p class="section-intro reveal">
-          Besoin d'un artisan à Flers pour du placo, de l'isolation, une terrasse composite ou une coordination de
-          chantier ? Envoyez votre demande, BATIORNE vous répond rapidement.
-        </p>
+    <main id="contenu">
+      <section class="hp-page-head">
+        <div class="container">
+          <p class="hp-eyebrow">Contact</p>
+          <h1>Demandez votre devis gratuit</h1>
+          <p class="hp-lead">
+            Placo, isolation, faux plafonds, rénovation ou terrasse composite : décrivez votre projet en quelques lignes,
+            BATIORNE vous recontacte rapidement pour convenir d'une visite.
+          </p>
+        </div>
+      </section>
 
-        <div class="contact-wrap">
-          <section class="card reveal">
-            <h2>Formulaire</h2>
+      <section class="section hp-section hp-contact-section">
+        <div class="container hp-contact">
+          <section class="hp-contact-card reveal" aria-labelledby="form-title">
+            <h2 id="form-title">Votre projet</h2>
             <!-- Pas encore de backend : main.js ouvre la messagerie avec la demande pré-remplie. -->
-            <form class="form-grid" action="mailto:batiorne@yahoo.com" method="post" enctype="text/plain" data-contact-form>
-              <div>
-                <label for="nom">Nom</label>
-                <input id="nom" name="nom" type="text" autocomplete="name" required />
-              </div>
-              <div>
-                <label for="telephone">Téléphone</label>
-                <input id="telephone" name="telephone" type="tel" autocomplete="tel" required />
+            <form class="hp-form" action="mailto:batiorne@yahoo.com" method="post" enctype="text/plain" data-contact-form>
+              <div class="hp-form-row">
+                <div>
+                  <label for="nom">Nom</label>
+                  <input id="nom" name="nom" type="text" autocomplete="name" required />
+                </div>
+                <div>
+                  <label for="telephone">Téléphone</label>
+                  <input id="telephone" name="telephone" type="tel" autocomplete="tel" required />
+                </div>
               </div>
               <div>
                 <label for="email">Email</label>
                 <input id="email" name="email" type="email" autocomplete="email" required />
               </div>
               <div>
-                <label for="projet">Description du projet</label>
-                <textarea id="projet" name="projet" required></textarea>
+                <label for="type">Type de travaux</label>
+                <select id="type" name="type">
+                  <option>Isolation</option>
+                  <option>Placo / cloisons</option>
+                  <option>Faux plafond</option>
+                  <option>Rénovation / aménagement intérieur</option>
+                  <option>Terrasse composite</option>
+                  <option>Coordination de chantier</option>
+                  <option>Autre</option>
+                </select>
               </div>
-              <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+              <div>
+                <label for="projet">Description du projet</label>
+                <textarea id="projet" name="projet" rows="5" placeholder="Pièces concernées, surface approximative, commune…" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Envoyer ma demande</button>
               <p class="form-status" data-form-status role="status" aria-live="polite"></p>
             </form>
           </section>
 
-          <section class="card reveal">
-            <h2>Coordonnées</h2>
-            <p>
-              <strong>BATIORNE</strong><br />
-              Artisan placo, isolation intérieure et terrasse composite<br />
-              Flers (61100), Orne
-            </p>
-            <p>
-              Téléphone : <a href="tel:+33626851661">06 26 85 16 61</a><br />
-              Email : <a href="mailto:batiorne@yahoo.com">batiorne@yahoo.com</a>
-            </p>
-            <div class="intervention-zone-card" role="note" aria-label="Zone d'intervention BATIORNE">
-              <h3>Zone d’intervention : Flers et alentours</h3>
-              <p>Saint-Georges-des-Groseillers, Messei, La Lande-Patry, Briouze et communes voisines.</p>
+          <aside class="hp-contact-side reveal">
+            <div class="hp-contact-card">
+              <h2>Vous préférez appeler ?</h2>
+              <a class="btn btn-primary hp-phone-btn" href="tel:+33626851661">06 26 85 16 61</a>
+              <p>Email : <a href="mailto:batiorne@yahoo.com">batiorne@yahoo.com</a></p>
+              <ul class="hp-list">
+                <li>Devis gratuit et sans engagement</li>
+                <li>Visite sur place</li>
+                <li>Qualifié RGE, garantie décennale</li>
+              </ul>
             </div>
-            <iframe
-              class="map-placeholder"
-              title="Carte de la zone d'intervention BATIORNE autour de Flers"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=Flers%2C%20Orne&amp;output=embed"
-            ></iframe>
-          </section>
+            <div class="hp-contact-card">
+              <h2>Zone d'intervention</h2>
+              <p>
+                Flers (61100) et alentours : Saint-Georges-des-Groseillers, Messei, La Lande-Patry, Briouze et communes
+                voisines de l'Orne.
+              </p>
+              <iframe
+                class="map-placeholder"
+                title="Carte de la zone d'intervention BATIORNE autour de Flers"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=Flers%2C%20Orne&amp;output=embed"
+              ></iframe>
+            </div>
+          </aside>
         </div>
-      </div>
+      </section>
     </main>
 
     <footer class="site-footer">
