@@ -14,11 +14,22 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:site_name" content="BATIORNE" />
+    <link rel="canonical" href="https://www.batiorne.fr/" />
+    <meta property="og:url" content="https://www.batiorne.fr/" />
+    <meta property="og:image" content="https://www.batiorne.fr/assets/images/maison/apres-sejour.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:title" content="BATIORNE | Placo, isolation et rénovation intérieure à Flers (Orne)" />
     <meta property="og:description" content="BATIORNE, artisan qualifié RGE à Flers : placo, cloisons, faux plafonds, isolation et rénovation intérieure dans l'Orne. Devis gratuit, garantie décennale." />
     <link rel="icon" type="image/png" href="assets/images/logo-256.png" />
     <link rel="apple-touch-icon" href="assets/images/logo-256.png" />
-    <script>document.documentElement.classList.add('js');</script>
+    <script>
+      document.documentElement.classList.add('js');
+      try {
+        if (!sessionStorage.getItem('batiorne_intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.documentElement.classList.add('is-intro');
+        }
+      } catch (e) {}
+    </script>
     <link rel="stylesheet" href="assets/css/styles.css" />
     <link rel="stylesheet" href="assets/css/home.css" />
     <script type="application/ld+json">
@@ -27,6 +38,8 @@
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
     "name": "BATIORNE",
+    "url": "https://www.batiorne.fr/",
+    "image": "https://www.batiorne.fr/assets/images/maison/apres-sejour.jpg",
     "description": "Artisan qualifié RGE : placo, cloisons, faux plafonds, isolation, rénovation intérieure, terrasse composite et coordination de chantier à Flers (Orne).",
     "telephone": "+33626851661",
     "email": "batiorne@yahoo.com",

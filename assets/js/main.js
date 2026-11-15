@@ -1,3 +1,15 @@
+// Entrance animation: once per visit, logo then curtain (styles in home.css).
+const root = document.documentElement;
+window.batiorneIntroMs = 0;
+if (root.classList.contains('is-intro')) {
+  window.batiorneIntroMs = 1500;
+  try {
+    sessionStorage.setItem('batiorne_intro', '1');
+  } catch (e) {}
+  setTimeout(() => root.classList.add('is-intro-out'), 1300);
+  setTimeout(() => root.classList.remove('is-intro', 'is-intro-out'), 2100);
+}
+
 // Mobile navigation toggle.
 const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
@@ -532,7 +544,7 @@ document.querySelectorAll('[data-compare]').forEach((compare) => {
       range.value = value;
       if (t < 1) requestAnimationFrame(animate);
     };
-    setTimeout(() => requestAnimationFrame(animate), 1200);
+    setTimeout(() => requestAnimationFrame(animate), 1200 + window.batiorneIntroMs);
   }
 });
 
