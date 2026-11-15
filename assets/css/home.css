@@ -1160,9 +1160,6 @@
     min-height: 0;
   }
 
-  .h3-hero-compare .h3-compare {
-    aspect-ratio: 4 / 5;
-  }
 
   .h3-section {
     padding: 4.5rem 0;
@@ -1173,9 +1170,6 @@
     justify-content: center;
   }
 
-  .h3-ba-grid .h3-compare {
-    aspect-ratio: 4 / 5;
-  }
 
   .h3-switch button {
     font-size: 0.8rem;
@@ -1345,4 +1339,116 @@
 
 .home3 main.section {
   padding-top: 8rem;
+}
+
+/* ---------- Logo: transparent wordmark on dark, no white chip ---------- */
+.home3 .logo-image.logo-wordmark {
+  width: auto;
+  height: 58px;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  mix-blend-mode: normal;
+}
+
+.home3 .nav-wrap {
+  min-height: 78px;
+}
+
+@media (max-width: 759px) {
+  .home3 .logo-image.logo-wordmark {
+    height: 46px;
+  }
+
+  .home3 .nav-wrap {
+    min-height: 66px;
+  }
+}
+
+/* ---------- Before/after framing: real photo proportions, centred ---------- */
+.h3-compare img {
+  object-position: center;
+}
+
+.h3-hero-compare .h3-compare {
+  max-width: 400px;
+}
+
+.h3-ba-grid figure {
+  max-width: 380px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 759px) {
+  .h3-hero-compare .h3-compare,
+  .h3-ba-grid figure {
+    max-width: 340px;
+  }
+}
+
+/* ---------- Centred text where it reads better ---------- */
+.home3 .hp-page-head .container {
+  text-align: center;
+}
+
+.home3 .hp-page-head .hp-lead {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home3 .hp-page-head .hp-actions,
+.home3 .hp-cta .hp-actions {
+  justify-content: center;
+}
+
+.home3 .hp-extra {
+  text-align: center;
+}
+
+.home3 .site-footer,
+.home3 .footer-grid {
+  text-align: center;
+}
+
+@media (max-width: 999px) {
+  .h3-hero-text {
+    text-align: center;
+  }
+
+  .h3-hero-text .h3-lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .h3-hero .h3-actions,
+  .h3-checks {
+    justify-content: center;
+  }
+
+  .h3-heat-info {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .h3-switch {
+    display: flex;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 759px) {
+  .h3-trust {
+    text-align: center;
+  }
+
+  .home3 .hp-svc > div {
+    text-align: center;
+  }
+
+  .home3 .hp-svc .hp-list {
+    justify-items: center;
+  }
 }
