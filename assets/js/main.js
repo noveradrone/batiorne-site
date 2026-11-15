@@ -284,20 +284,54 @@ if (carousel) {
       });
     }
 
-    // Gentle auto-slide; stops when user hovers.
-    let autoSlide = setInterval(() => {
+    // Gentle auto-slide; pauses on hover/focus and is disabled for reduced motion.
+    const slideNext = () => {
       const maxScrollLeft = track.scrollWidth - track.clientWidth;
       const next = track.scrollLeft + getStep();
-      track.scrollTo({ left: next >= maxScrollLeft ? 0 : next, behavior: 'smooth' });
-    }, 3000);
+      track.scrollTo({ left: next >= maxScrollLeft - 1 ? 0 : next, behavior: 'smooth' });
+    };
 
-    carousel.addEventListener('mouseenter', () => clearInterval(autoSlide));
-    carousel.addEventListener('mouseleave', () => {
-      autoSlide = setInterval(() => {
-        const maxScrollLeft = track.scrollWidth - track.clientWidth;
-        const next = track.scrollLeft + getStep();
-        track.scrollTo({ left: next >= maxScrollLeft ? 0 : next, behavior: 'smooth' });
-      }, 3000);
-    });
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let autoSlide = null;
+    const startAutoSlide = () => {
+      if (reduceMotion || autoSlide) return;
+      autoSlide = setInterval(slideNext, 3000);
+    };
+    const stopAutoSlide = () => {
+      clearInterval(autoSlide);
+      autoSlide = null;
+    };
+
+    startAutoSlide();
+    carousel.addEventListener('mouseenter', stopAutoSlide);
+    carousel.addEventListener('mouseleave', startAutoSlide);
+    carousel.addEventListener('focusin', stopAutoSlide);
+    carousel.addEventListener('focusout', startAutoSlide);
   }
+}
+
+// Contact form: no backend yet, so open the visitor's mail app with the request pre-filled.
+const contactForm = document.querySelector('[data-contact-form]');
+if (contactForm) {
+  contactForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(contactForm);
+    const subject = `Demande de devis - ${data.get('nom')}`;
+    const body = [
+      `Nom : ${data.get('nom')}`,
+      `Téléphone : ${data.get('telephone')}`,
+      `Email : ${data.get('email')}`,
+      '',
+      'Projet :',
+      data.get('projet')
+    ].join('\n');
+
+    window.location.href = `mailto:batiorne@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    const status = contactForm.querySelector('[data-form-status]');
+    if (status) {
+      status.textContent =
+        "Votre messagerie va s'ouvrir avec la demande pré-remplie. Si rien ne s'ouvre, écrivez-nous à batiorne@yahoo.com ou appelez le 06 26 85 16 61.";
+    }
+  });
 }

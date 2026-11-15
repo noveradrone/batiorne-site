@@ -1971,3 +1971,12 @@ textarea {
     text-align: left;
   }
 }
+
+.form-status {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.form-status:empty {
+  display: none;
+}

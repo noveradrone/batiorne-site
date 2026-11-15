@@ -14,7 +14,7 @@
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="brand" href="index.html" aria-label="Accueil BATIORNE">
-          <img class="logo-image" src="assets/images/logo.PNG" alt="Logo BATIORNE" />
+          <img class="logo-image" src="assets/images/logo-256.png" alt="Logo BATIORNE" />
           <span>BATIORNE</span>
         </a>
         <button class="menu-toggle" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
@@ -38,25 +38,26 @@
         <div class="contact-wrap">
           <section class="card reveal">
             <h2>Formulaire</h2>
-            <!-- Formulaire prêt à connecter à un service d'envoi (Formspree, backend, etc.). -->
-            <form class="form-grid" action="#" method="post">
+            <!-- Pas encore de backend : main.js ouvre la messagerie avec la demande pré-remplie. -->
+            <form class="form-grid" action="mailto:batiorne@yahoo.com" method="post" enctype="text/plain" data-contact-form>
               <div>
                 <label for="nom">Nom</label>
-                <input id="nom" name="nom" type="text" required />
+                <input id="nom" name="nom" type="text" autocomplete="name" required />
               </div>
               <div>
                 <label for="telephone">Téléphone</label>
-                <input id="telephone" name="telephone" type="tel" required />
+                <input id="telephone" name="telephone" type="tel" autocomplete="tel" required />
               </div>
               <div>
                 <label for="email">Email</label>
-                <input id="email" name="email" type="email" required />
+                <input id="email" name="email" type="email" autocomplete="email" required />
               </div>
               <div>
                 <label for="projet">Description du projet</label>
                 <textarea id="projet" name="projet" required></textarea>
               </div>
               <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+              <p class="form-status" data-form-status role="status" aria-live="polite"></p>
             </form>
           </section>
 
