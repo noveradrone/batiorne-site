@@ -1661,3 +1661,16 @@
     color: #d9ddd2;
   }
 }
+
+/* New before/after photos are 3:4; older composites keep their taller ratio. */
+.h3-compare {
+  aspect-ratio: 3 / 4;
+}
+
+.h3-compare.h3-compare-tall {
+  aspect-ratio: 19 / 30;
+}
+
+.home3 .gallery figure img {
+  aspect-ratio: 3 / 4;
+}
