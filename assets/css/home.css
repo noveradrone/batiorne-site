@@ -2397,3 +2397,76 @@ html.is-intro:not(.is-intro-out) .h3-hero {
     background: url("../images/logo-light.png") center 46% / 240px auto no-repeat, var(--ink, #f7f4ee);
   }
 }
+
+/* =====================================================================
+   SEO structure: keyword H1 as the small chip, big visual title as <p>
+   ===================================================================== */
+.h3-hero .h3-hero-title {
+  font-size: clamp(2.6rem, 6.4vw, 5.2rem);
+  line-height: 1.02;
+  letter-spacing: -2px;
+  font-weight: 800;
+  margin: 0 0 1.4rem;
+  color: var(--text-on-dark);
+  animation: h3-rise 0.9s 0.2s both;
+}
+
+.h3-hero h1.h3-chip,
+.home3 main h1.h3-chip {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  letter-spacing: normal;
+  font-weight: 600;
+  margin: 0 0 1.4rem;
+  color: var(--muted-on-dark);
+}
+
+/* Trade pages */
+.h3-breadcrumb {
+  font-size: 0.85rem;
+  color: var(--muted-on-dark);
+  margin-bottom: 1rem;
+}
+
+.h3-breadcrumb a {
+  color: var(--lime);
+}
+
+.h3-page-checks {
+  justify-content: center;
+}
+
+.h3-side-title {
+  font-size: 1.35rem;
+  margin: 0.5rem 0 0.8rem;
+}
+
+.h3-zone-block {
+  text-align: center;
+  max-width: 820px;
+}
+
+.h3-zone-block h2 {
+  font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+  margin: 0.5rem 0 0.8rem;
+}
+
+.h3-zone-block p {
+  color: var(--muted-on-dark);
+}
+
+.hp-svc-more {
+  margin-top: 0.4rem;
+}
+
+/* Footer with a services column */
+.footer-services a {
+  display: inline-block;
+  margin: 0.1rem 0;
+}
+
+@media (min-width: 760px) {
+  .home3 .footer-grid {
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  }
+}
